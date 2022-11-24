@@ -1,4 +1,4 @@
-package com.example.currencyconverterapp.presentation.get_currencies
+package com.example.currencycoverterapp.presentation.get_currencies
 
 import com.example.currencycoverterapp.domain.model.CurrencyConversion
 

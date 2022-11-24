@@ -1,7 +1,7 @@
 package com.example.currencycoverterapp.data.repository
 
-import com.example.currencyconverterapp.common.Constants
-import com.example.currencyconverterapp.common.Resource
+import com.example.currencycoverterapp.common.Constants
+import com.example.currencycoverterapp.common.Resource
 import com.example.currencycoverterapp.data.local.CurrencyConversionDao
 import com.example.currencycoverterapp.data.local.CurrencyConversionDatabase
 import com.example.currencycoverterapp.data.local.entity.toCurrencyConversion

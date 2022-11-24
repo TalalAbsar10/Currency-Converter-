@@ -1,25 +1,31 @@
-package com.example.currencyconverterapp.presentation.get_currencies
+package com.example.currencycoverterapp.presentation.ui.get_currencies_calculation
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.coroutineScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.currencycoverterapp.R
-import com.example.currencycoverterapp.databinding.FragmentGetCurrenciesBinding
+import com.example.currencycoverterapp.databinding.FragmentCurrenciesCalculationBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class GetCurrenciesCalculationFragment : Fragment() {
 
-    val viewModel: GetCurrenciesViewModel by viewModels()
-    private lateinit var binding: FragmentGetCurrenciesBinding
+    private lateinit var binding: FragmentCurrenciesCalculationBinding
+    val args: GetCurrenciesCalculationFragmentArgs by navArgs()
+    private lateinit var timer: CountDownTimer
+    var currentMillis: Long = 0
+    var enteredAmount: String = ""
+    var convertedAmount: String = ""
+    var fromCurrency: String = ""
+    var toCurrency: String = ""
+    var selectedCurrencyConversionRate: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +38,6 @@ class GetCurrenciesCalculationFragment : Fragment() {
             container,
             false
         )
-        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
@@ -40,6 +45,77 @@ class GetCurrenciesCalculationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        enteredAmount = args.array[0]
+        convertedAmount = args.array[1]
+        fromCurrency = args.array[2]
+        toCurrency = args.array[3]
+        selectedCurrencyConversionRate = args.array[4]
 
+        binding.tvEnteredAmount.text = enteredAmount
+        binding.tvConvertedAmount.text = convertedAmount
+
+        timer = object : CountDownTimer(30000, 300) {
+            // Callback function, fired on regular interval
+            override fun onTick(millisUntilFinished: Long) {
+                binding.tvTimer.setText("" + millisUntilFinished / 1000)
+                currentMillis = millisUntilFinished
+            }
+
+            override fun onFinish() {
+                findNavController().navigate(
+                    GetCurrenciesCalculationFragmentDirections.actionGetCurrenciesCalculationFragmentToGetCurrenciesFragment()
+                )
+            }
+        }.start()
+
+        binding.btnConvert.setOnClickListener {
+            val dialogBuilder = AlertDialog.Builder(activity!!)
+            dialogBuilder.setMessage(
+                "You are about to get ${convertedAmount}${toCurrency}" +
+                        "for ${enteredAmount}${fromCurrency}.\n" +
+                        "Do you approve this transaction?"
+            )
+                .setCancelable(false)
+                .setPositiveButton("Approve") { dialog, id ->
+                    dialog.dismiss()
+                    val array = arrayOf(convertedAmount, toCurrency, selectedCurrencyConversionRate)
+                    findNavController().navigate(
+                        GetCurrenciesCalculationFragmentDirections.actionGetCurrenciesCalculationFragmentToApprovedTransactionFragment(
+                            array
+                        )
+                    )
+
+                }.setNegativeButton("cancel") { dialog, id ->
+                    dialog.dismiss()
+                    timer = object : CountDownTimer(currentMillis, 300) {
+                        override fun onTick(millisUntilFinished: Long) {
+                            currentMillis = millisUntilFinished
+                            binding.tvTimer.text = (millisUntilFinished / 1000).toString() + ""
+                        }
+
+                        override fun onFinish() {}
+                    }.start()
+                }
+
+            val alert = dialogBuilder.create()
+            alert.setTitle("Approval Required")
+            alert.show()
+            timer.cancel()
+        }
     }
+
+    override fun onPause() {
+        super.onPause()
+        timer.cancel()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        timer.cancel()
+    }
+
+    override fun onDestroy() {
+        super.onPause()
+    }
+
 }

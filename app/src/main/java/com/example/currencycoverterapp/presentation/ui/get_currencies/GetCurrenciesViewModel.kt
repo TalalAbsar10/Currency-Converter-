@@ -1,9 +1,9 @@
-package com.example.currencyconverterapp.presentation.get_currencies
+package com.example.currencycoverterapp.presentation.get_currencies
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.currencyconverterapp.common.Constants
-import com.example.currencyconverterapp.common.Resource
+import com.example.currencycoverterapp.common.Constants
+import com.example.currencycoverterapp.common.Resource
 import com.example.currencycoverterapp.domain.use_cases.GetCurrenciesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

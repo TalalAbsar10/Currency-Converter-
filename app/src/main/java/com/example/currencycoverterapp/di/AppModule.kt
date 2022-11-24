@@ -2,7 +2,7 @@ package com.example.currencycoverterapp.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.currencyconverterapp.common.Constants
+import com.example.currencycoverterapp.common.Constants
 import com.example.currencycoverterapp.data.local.Converters
 import com.example.currencycoverterapp.data.local.CurrencyConversionDatabase
 import com.example.currencycoverterapp.data.remote.CurrencyConversionAPI

@@ -8,14 +8,14 @@
 
         <variable
             name="fragment"
-            type="com.example.currencyconverterapp.presentation.get_currencies.GetCurrenciesCalculationFragment" />
+            type="com.example.currencycoverterapp.presentation.ui.get_currencies_calculation.GetCurrenciesCalculationFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingHorizontal="32dp"
-        tools:context="com.example.currencyconverterapp.presentation.get_currencies.GetCurrenciesFragment">
+        tools:context="com.example.currencycoverterapp.presentation.get_currencies.GetCurrenciesFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"

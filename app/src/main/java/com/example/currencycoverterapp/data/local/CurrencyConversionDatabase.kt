@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.currencycoverterapp.data.local.entity.CurrencyConversionEntity
 
-@Database(entities = [CurrencyConversionEntity::class], version = 2)
+@Database(entities = [CurrencyConversionEntity::class], version = 1,exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class CurrencyConversionDatabase : RoomDatabase() {
 

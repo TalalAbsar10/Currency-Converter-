@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.currencyconverterapp.presentation.get_currencies.GetCurrenciesViewModel" />
+            type="com.example.currencycoverterapp.presentation.get_currencies.GetCurrenciesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingHorizontal="32dp"
-        tools:context="com.example.currencyconverterapp.presentation.get_currencies.GetCurrenciesFragment">
+        tools:context="com.example.currencycoverterapp.presentation.get_currencies.GetCurrenciesFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/btnConvert"
+            app:layout_constraintBottom_toBottomOf="@+id/btnCalculate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spFromCurrency" />

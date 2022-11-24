@@ -3,13 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragment_get_currencies">
+    app:startDestination="@id/getCurrenciesFragment">
 
     <fragment
-        android:id="@+id/fragment_get_currencies"
-        android:name="com.example.currencyconverterapp.presentation.get_currencies.GetCurrenciesFragment"
-        android:label="fragment_top_stories"
-        tools:layout="@layout/fragment_get_currencies" />
+        android:id="@+id/getCurrenciesFragment"
+        android:name="com.example.currencycoverterapp.presentation.ui.get_currencies.GetCurrenciesFragment"
+        android:label="getCurrenciesFragment"
+        tools:layout="@layout/fragment_get_currencies">
 
+        <action
+            android:id="@+id/action_getCurrenciesFragment_to_getCurrenciesCalculationFragment"
+            app:destination="@id/getCurrenciesCalculationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/getCurrenciesCalculationFragment"
+        android:name="com.example.currencycoverterapp.presentation.ui.get_currencies_calculation.GetCurrenciesCalculationFragment"
+        android:label="getCurrenciesCalculationFragment"
+        tools:layout="@layout/fragment_currencies_calculation">
 
+        <argument
+            android:name="array"
+            app:argType="string[]" />
+        <action
+            android:id="@+id/action_getCurrenciesCalculationFragment_to_getCurrenciesFragment"
+            app:destination="@id/getCurrenciesFragment" />
+        <action
+            android:id="@+id/action_getCurrenciesCalculationFragment_to_approvedTransactionFragment"
+            app:destination="@id/approvedTransactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/approvedTransactionFragment"
+        android:name="com.example.currencycoverterapp.presentation.ui.approved_transaction.ApprovedTransactionFragment"
+        android:label="ApprovedTransactionFragment"
+        tools:layout="@layout/fragment_approved_transaction">
+        <argument
+            android:name="array"
+            app:argType="string[]" />
+    </fragment>
 </navigation>

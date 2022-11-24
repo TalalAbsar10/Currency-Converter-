@@ -1,6 +1,6 @@
 package com.example.currencycoverterapp.domain.repository
 
-import com.example.currencyconverterapp.common.Resource
+import com.example.currencycoverterapp.common.Resource
 import com.example.currencycoverterapp.domain.model.CurrencyConversion
 import kotlinx.coroutines.flow.Flow
 

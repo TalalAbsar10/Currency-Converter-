@@ -4,7 +4,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.currencycoverterapp.domain.model.CurrencyConversion
 
-@Entity(tableName = "currencies_conversion")
+@Entity(
+    tableName = "currencies_conversion", indices = [androidx.room.Index(
+        value = ["result"],
+        unique = true
+    )]
+)
 data class CurrencyConversionEntity(
     val baseCode: String,
     val conversionRates: Map<String, Double>,
