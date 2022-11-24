@@ -1,6 +1,10 @@
 package com.example.currencycoverterapp.di
 
+import android.app.Application
+import androidx.room.Room
 import com.example.currencyconverterapp.common.Constants
+import com.example.currencycoverterapp.data.local.Converters
+import com.example.currencycoverterapp.data.local.CurrencyConversionDatabase
 import com.example.currencycoverterapp.data.remote.CurrencyConversionAPI
 import com.example.currencycoverterapp.data.repository.CurrencyConversionRepositoryImpl
 import com.example.currencycoverterapp.domain.repository.CurrencyConversionRepository
@@ -28,8 +32,21 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCurrencyConversionRepository(api: CurrencyConversionAPI): CurrencyConversionRepository {
-        return CurrencyConversionRepositoryImpl(api)
+    fun provideCurrencyConversionRepository(
+        api: CurrencyConversionAPI,
+        db: CurrencyConversionDatabase
+    ): CurrencyConversionRepository {
+        return CurrencyConversionRepositoryImpl(api, db.dao)
 
+    }
+
+    @Provides
+    @Singleton
+    fun provideCurrencyConversionDatabase(app: Application): CurrencyConversionDatabase {
+        return Room.databaseBuilder(
+            app, CurrencyConversionDatabase::class.java, "currencies_conversion_db"
+        ).addTypeConverter(Converters())
+            .fallbackToDestructiveMigration()
+            .build()
     }
 }
