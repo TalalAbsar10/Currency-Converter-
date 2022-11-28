@@ -10,34 +10,68 @@
             type="com.example.currencycoverterapp.presentation.ui.approved_transaction.ApprovedTransactionFragment" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.currencycoverterapp.presentation.get_currencies.GetCurrenciesFragment">
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.example.currencycoverterapp.presentation.get_currencies.GetCurrenciesFragment">
 
 
-        <ImageView
-            android:id="@+id/iv_tick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.213" />
+            <ImageView
+                android:id="@+id/iv_tick"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_check_72"
+                app:layout_constraintBottom_toTopOf="@+id/tv_text"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toTopOf="@id/guidelineTop" />
 
-        <TextView
-            android:id="@+id/tv_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/approve_transaction_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_tick"
-            app:layout_constraintVertical_bias="0.244" />
+            <TextView
+                android:id="@+id/tv_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/approve_transaction_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/approved_transaction_text_size"
+                app:layout_constraintBottom_toBottomOf="@id/guidelineBottom"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/iv_tick"
+                app:layout_constraintTop_toTopOf="@id/guidelineTop" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".10" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".90" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".10" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".90" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

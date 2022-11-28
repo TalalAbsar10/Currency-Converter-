@@ -1,8 +1,7 @@
-package com.example.currencycoverterapp.presentation.get_currencies
+package com.example.currencycoverterapp.presentation.ui.get_currencies
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.currencycoverterapp.common.Constants
 import com.example.currencycoverterapp.common.Resource
 import com.example.currencycoverterapp.domain.use_cases.GetCurrenciesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,7 +30,8 @@ class GetCurrenciesViewModel @Inject constructor(
                 }
                 is Resource.Error -> {
                     _state.value = GetCurrenciesState(
-                        error = result.message ?: Constants.ERROR_MESSAGE_HTTP_EXCEPTION
+                        getCurrencies = result.data, error = result.error
+                        //error = result.message ?: Constants.ERROR_MESSAGE_HTTP_EXCEPTION
                     )
                 }
             }

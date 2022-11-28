@@ -5,6 +5,8 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.currencycoverterapp.data.local.entity.CurrencyConversionEntity
+import com.example.currencycoverterapp.domain.model.CurrencyConversion
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CurrencyConversionDao {
@@ -13,5 +15,6 @@ interface CurrencyConversionDao {
     suspend fun insertCurrencies(currencies: CurrencyConversionEntity)
 
     @Query("SELECT * FROM currencies_conversion")
-    suspend fun getCurrencies(): CurrencyConversionEntity
+    fun getCurrencies(): Flow<CurrencyConversion>
+    //suspend fun getCurrencies(): CurrencyConversionEntity
 }

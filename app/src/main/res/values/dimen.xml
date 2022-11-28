@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tvAmount_size">25sp</dimen>
+    <dimen name="etAmount_height">53dip</dimen>
+    <dimen name="spinner_padding">20dp</dimen>
+    <dimen name="approved_transaction_text_size">20sp</dimen>
+    <dimen name="currencies_calculation_amount_text_size">30sp</dimen>
+</resources>

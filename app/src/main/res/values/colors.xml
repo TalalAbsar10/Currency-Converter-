@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="brickRed">#822222</color>
+    <color name="persianRed">#CA3433</color>
+    <color name="imperialRed">#90ED2939</color>
+    <color name="ferrariRed">#90FF2800</color>
 </resources>

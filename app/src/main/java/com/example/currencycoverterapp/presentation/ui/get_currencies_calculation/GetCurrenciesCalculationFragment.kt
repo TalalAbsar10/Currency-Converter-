@@ -51,11 +51,10 @@ class GetCurrenciesCalculationFragment : Fragment() {
         toCurrency = args.array[3]
         selectedCurrencyConversionRate = args.array[4]
 
-        binding.tvEnteredAmount.text = enteredAmount
-        binding.tvConvertedAmount.text = convertedAmount
+        binding.tvEnteredAmount.text = "$enteredAmount $fromCurrency"
+        binding.tvConvertedAmount.text = "$convertedAmount $toCurrency"
 
         timer = object : CountDownTimer(30000, 300) {
-            // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {
                 binding.tvTimer.setText("" + millisUntilFinished / 1000)
                 currentMillis = millisUntilFinished
@@ -71,8 +70,8 @@ class GetCurrenciesCalculationFragment : Fragment() {
         binding.btnConvert.setOnClickListener {
             val dialogBuilder = AlertDialog.Builder(activity!!)
             dialogBuilder.setMessage(
-                "You are about to get ${convertedAmount}${toCurrency}" +
-                        "for ${enteredAmount}${fromCurrency}.\n" +
+                "You are about to get ${convertedAmount} ${toCurrency} " +
+                        "for ${enteredAmount} ${fromCurrency}.\n" +
                         "Do you approve this transaction?"
             )
                 .setCancelable(false)

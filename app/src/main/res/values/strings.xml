@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">CurrencyCoverterApp</string>
     <string name="calculate">Calculate</string>
+    <string name="call_service">Call service</string>
     <string name="convert">Convert</string>
     <string name="entered_amount">Entered_Amount</string>
     <string name="converted_amount">Converted Amount</string>
     <string name="timer">30</string>
     <string name="sec_left">sec left</string>
     <string name="approve_transaction_text">Approved</string>
+    <string name="amount">Amount:</string>
 </resources>
