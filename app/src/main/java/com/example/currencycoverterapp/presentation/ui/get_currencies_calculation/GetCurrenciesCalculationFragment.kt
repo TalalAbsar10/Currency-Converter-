@@ -11,6 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.currencycoverterapp.R
+import com.example.currencycoverterapp.common.Constants.APPROVAL_REQUIRED
+import com.example.currencycoverterapp.common.Constants.APPROVE
+import com.example.currencycoverterapp.common.Constants.CANCEL
+import com.example.currencycoverterapp.common.Constants.DO_YOU_APPROVE_THIS_TRANSACTION
+import com.example.currencycoverterapp.common.Constants.FOR
+import com.example.currencycoverterapp.common.Constants.YOU_ARE_ABOUT_TO_GET
 import com.example.currencycoverterapp.databinding.FragmentCurrenciesCalculationBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -70,12 +76,12 @@ class GetCurrenciesCalculationFragment : Fragment() {
         binding.btnConvert.setOnClickListener {
             val dialogBuilder = AlertDialog.Builder(activity!!)
             dialogBuilder.setMessage(
-                "You are about to get ${convertedAmount} ${toCurrency} " +
-                        "for ${enteredAmount} ${fromCurrency}.\n" +
-                        "Do you approve this transaction?"
+                "${YOU_ARE_ABOUT_TO_GET} ${convertedAmount} ${toCurrency} " +
+                        "${FOR} ${enteredAmount} ${fromCurrency}.\n" +
+                        "${DO_YOU_APPROVE_THIS_TRANSACTION}"
             )
                 .setCancelable(false)
-                .setPositiveButton("Approve") { dialog, id ->
+                .setPositiveButton("${APPROVE}") { dialog, id ->
                     dialog.dismiss()
                     val array = arrayOf(convertedAmount, toCurrency, selectedCurrencyConversionRate)
                     findNavController().navigate(
@@ -84,7 +90,7 @@ class GetCurrenciesCalculationFragment : Fragment() {
                         )
                     )
 
-                }.setNegativeButton("cancel") { dialog, id ->
+                }.setNegativeButton("${CANCEL}") { dialog, id ->
                     dialog.dismiss()
                     timer = object : CountDownTimer(currentMillis, 300) {
                         override fun onTick(millisUntilFinished: Long) {
@@ -97,7 +103,7 @@ class GetCurrenciesCalculationFragment : Fragment() {
                 }
 
             val alert = dialogBuilder.create()
-            alert.setTitle("Approval Required")
+            alert.setTitle("${APPROVAL_REQUIRED}")
             alert.show()
             timer.cancel()
         }

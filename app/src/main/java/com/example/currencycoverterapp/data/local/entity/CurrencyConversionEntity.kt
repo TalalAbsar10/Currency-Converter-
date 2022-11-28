@@ -2,7 +2,6 @@ package com.example.currencycoverterapp.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.currencycoverterapp.domain.model.CurrencyConversion
 
 @Entity(
     tableName = "currencies_conversion", indices = [androidx.room.Index(
@@ -22,17 +21,3 @@ data class CurrencyConversionEntity(
     val timeNextUpdateUtc: String,
     @PrimaryKey(autoGenerate = true) val id: Int? = null
 )
-
-fun CurrencyConversionEntity.toCurrencyConversion(): CurrencyConversion {
-    return CurrencyConversion(
-        baseCode = baseCode,
-        conversionRates = conversionRates,
-        documentation = documentation,
-        result = result,
-        termsOfUse = termsOfUse,
-        timeLastUpdateUnix = timeLastUpdateUnix,
-        timeLastUpdateUtc = timeLastUpdateUtc,
-        timeNextUpdateUtc = timeNextUpdateUtc,
-        timeNextUpdateUnix = timeNextUpdateUnix
-    )
-}

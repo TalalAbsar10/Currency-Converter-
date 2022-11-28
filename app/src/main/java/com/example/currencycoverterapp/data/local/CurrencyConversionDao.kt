@@ -16,5 +16,4 @@ interface CurrencyConversionDao {
 
     @Query("SELECT * FROM currencies_conversion")
     fun getCurrencies(): Flow<CurrencyConversion>
-    //suspend fun getCurrencies(): CurrencyConversionEntity
 }

@@ -8,7 +8,6 @@ import com.google.gson.reflect.TypeToken
 @ProvidedTypeConverter
 class Converters(
 ) {
-
     @TypeConverter
     fun fromMapToConversionRates(value: String): Map<String, Double> =
         Gson().fromJson(value, object : TypeToken<Map<String, Double>>() {}.type)

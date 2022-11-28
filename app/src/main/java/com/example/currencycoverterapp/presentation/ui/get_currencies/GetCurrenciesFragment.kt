@@ -12,6 +12,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
 import com.example.currencycoverterapp.R
+import com.example.currencycoverterapp.common.Constants
+import com.example.currencycoverterapp.common.Constants.BASE_CURRENCY
 import com.example.currencycoverterapp.databinding.FragmentGetCurrenciesBinding
 import com.example.currencycoverterapp.domain.model.CurrencyConversion
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,7 +48,7 @@ class GetCurrenciesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnCallService.setOnClickListener {
-        callAPI("USD")
+            callAPI(BASE_CURRENCY)
         }
         binding.btnCalculate.setOnClickListener {
             if (binding.etAmount.text.toString() != "") {
@@ -72,7 +74,11 @@ class GetCurrenciesFragment : Fragment() {
                         array
                     )
                 )
-            } else Toast.makeText(requireContext(), "Amount can not be empty", Toast.LENGTH_SHORT)
+            } else Toast.makeText(
+                requireContext(),
+                Constants.AMOUNT_CAN_NOT_BE_EMPTY,
+                Toast.LENGTH_SHORT
+            )
                 .show()
         }
     }
@@ -131,7 +137,7 @@ class GetCurrenciesFragment : Fragment() {
                 it.getCurrencies?.let {
                     binding.progressBar.visibility = View.GONE
                     val list = ArrayList<String>()
-                    list.add("Select")
+                    list.add(Constants.SELECT)
                     for (s in it.conversionRates.keys) {
                         list.add(s)
                     }

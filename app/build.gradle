@@ -18,7 +18,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.example.currencycoverterapp.HiltTestRunner"
     }
 
     buildTypes {
@@ -102,6 +102,8 @@ dependencies {
     testImplementation "com.google.truth:truth:$google_truth"
     testImplementation "com.squareup.okhttp3:mockwebserver:$mockwebserver"
     testImplementation "io.mockk:mockk:$mock"
+    testImplementation 'androidx.fragment:fragment-ktx:1.6.0-alpha03'
+    debugImplementation 'androidx.fragment:fragment-testing:1.6.0-alpha03'
 
     // Instrumentation tests
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_testing"
@@ -114,5 +116,11 @@ dependencies {
     androidTestImplementation "androidx.test:core-ktx:$test_core"
     androidTestImplementation "com.squareup.okhttp3:mockwebserver:$mockwebserver"
     androidTestImplementation "io.mockk:mockk-android:$mock_android"
-    androidTestImplementation 'androidx.test:runner:1.5.1'
+    androidTestImplementation "org.mockito:mockito-android:$mockito"
+    androidTestImplementation "org.mockito:mockito-core:4.9.0"
+    androidTestImplementation "androidx.test:runner:$test_runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso"
+
 }

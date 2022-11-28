@@ -1,7 +1,6 @@
 package com.example.currencycoverterapp.data.remote.dto
 
 import com.example.currencycoverterapp.data.local.entity.CurrencyConversionEntity
-import com.example.currencycoverterapp.domain.model.CurrencyConversion
 import com.google.gson.annotations.SerializedName
 
 data class CurrencyConversionDTO(
@@ -25,20 +24,6 @@ data class CurrencyConversionDTO(
 
 fun CurrencyConversionDTO.toCurrencyConversionDTO(): CurrencyConversionEntity {
     return CurrencyConversionEntity(
-        baseCode = baseCode,
-        conversionRates = conversionRates,
-        documentation = documentation,
-        result = result,
-        termsOfUse = termsOfUse,
-        timeLastUpdateUnix = timeLastUpdateUnix,
-        timeLastUpdateUtc = timeLastUpdateUtc,
-        timeNextUpdateUtc = timeNextUpdateUtc,
-        timeNextUpdateUnix = timeNextUpdateUnix
-    )
-}
-
-fun CurrencyConversionDTO.toCurrencies(): CurrencyConversion {
-    return CurrencyConversion(
         baseCode = baseCode,
         conversionRates = conversionRates,
         documentation = documentation,

@@ -8,6 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.currencycoverterapp.R
+import com.example.currencycoverterapp.common.Constants.GREAT_NOW_YOU_HAVE
+import com.example.currencycoverterapp.common.Constants.IN_YOUR_ACCOUNT
+import com.example.currencycoverterapp.common.Constants.YOUR_CONVERSION_RATE_WAS_1
 import com.example.currencycoverterapp.databinding.FragmentApprovedTransactionBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,10 +22,6 @@ class ApprovedTransactionFragment : Fragment() {
     var convertedAmount: String = ""
     var toCurrency: String = ""
     var selectedCurrencyConversionRate: String = ""
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,8 +44,8 @@ class ApprovedTransactionFragment : Fragment() {
         toCurrency = args.array[1]
         selectedCurrencyConversionRate = args.array[2]
         binding.tvText.text =
-            "Great now you have ${convertedAmount} ${toCurrency} in your account.\n" +
-                    "\n" + "Your conversion rate was 1/${selectedCurrencyConversionRate}"
+            "${GREAT_NOW_YOU_HAVE} ${convertedAmount} ${toCurrency} ${IN_YOUR_ACCOUNT}\n" +
+                    "\n" + "${YOUR_CONVERSION_RATE_WAS_1}${selectedCurrencyConversionRate}"
     }
 
 }

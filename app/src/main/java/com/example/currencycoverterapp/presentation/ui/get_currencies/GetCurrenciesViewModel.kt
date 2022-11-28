@@ -31,7 +31,6 @@ class GetCurrenciesViewModel @Inject constructor(
                 is Resource.Error -> {
                     _state.value = GetCurrenciesState(
                         getCurrencies = result.data, error = result.error
-                        //error = result.message ?: Constants.ERROR_MESSAGE_HTTP_EXCEPTION
                     )
                 }
             }
