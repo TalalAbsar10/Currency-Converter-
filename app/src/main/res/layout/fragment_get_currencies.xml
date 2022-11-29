@@ -20,22 +20,12 @@
             android:layout_height="match_parent"
             tools:context="com.example.currencycoverterapp.presentation.get_currencies.GetCurrenciesFragment">
 
-            <Button
-                android:id="@+id/btnCallService"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/call_service"
-                app:layout_constraintBottom_toTopOf="@id/spFromCurrency"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <Spinner
                 android:id="@+id/spFromCurrency"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/spinner_padding"
-                app:layout_constraintBottom_toTopOf="@id/etAmount"
+                app:layout_constraintBottom_toTopOf="@id/tv_Amount"
                 app:layout_constraintEnd_toStartOf="@+id/iv_arrows"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="@+id/guidelineStart"
@@ -50,14 +40,14 @@
                 app:layout_constraintEnd_toStartOf="@id/spToCurrency"
                 app:layout_constraintHorizontal_weight="0.5"
                 app:layout_constraintStart_toEndOf="@id/spFromCurrency"
-                app:layout_constraintTop_toBottomOf="@id/btnCallService" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Spinner
                 android:id="@+id/spToCurrency"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/spinner_padding"
-                app:layout_constraintBottom_toTopOf="@id/etAmount"
+                app:layout_constraintBottom_toTopOf="@id/tv_Amount"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toEndOf="@+id/iv_arrows"

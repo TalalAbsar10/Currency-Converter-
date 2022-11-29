@@ -28,6 +28,11 @@ class GetCurrenciesFragment : Fragment() {
     lateinit var data: CurrencyConversion
     var selectedCurrencyConversionRate: String = ""
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,13 +52,12 @@ class GetCurrenciesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
         callAPI(BASE_CURRENCY)
-
         binding.btnCalculate.setOnClickListener {
-            if (binding.etAmount.text.toString() != "") {
+            if (binding.etAmount.text.toString() != "" &&
+                binding.spFromCurrency.selectedItem.toString() != Constants.SELECT &&
+                binding.spToCurrency.selectedItem.toString() != Constants.SELECT
+            ) {
                 selectedCurrencyConversionRate = formatToToDigits(
                     data.conversionRates.getValue(binding.spToCurrency.selectedItem.toString())
                 ).toString()
@@ -76,12 +80,15 @@ class GetCurrenciesFragment : Fragment() {
                         array
                     )
                 )
-            } else Toast.makeText(
-                requireContext(),
-                Constants.AMOUNT_CAN_NOT_BE_EMPTY,
-                Toast.LENGTH_SHORT
-            )
-                .show()
+            } else {
+
+                Toast.makeText(
+                    requireContext(),
+                    Constants.REQUIRED_FIELDS_CAN_NOT_BE_EMPTY,
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            }
         }
     }
 

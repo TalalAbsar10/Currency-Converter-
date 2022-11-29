@@ -12,6 +12,7 @@ object Constants {
     const val BASE_CURRENCY = "USD"
     const val SELECT = "Select"
     const val AMOUNT_CAN_NOT_BE_EMPTY = "Amount can not be empty"
+    const val REQUIRED_FIELDS_CAN_NOT_BE_EMPTY = "Required fields can not be empty"
 
     //For Currencies Calculation Fragment
     const val GREAT_NOW_YOU_HAVE = "Great now you have"

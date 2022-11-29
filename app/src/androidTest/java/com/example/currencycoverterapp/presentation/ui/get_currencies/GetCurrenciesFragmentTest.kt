@@ -57,8 +57,6 @@ class GetCurrenciesFragmentTest {
         );
 
         onView(withId(com.example.currencycoverterapp.R.id.btnCalculate)).perform(click())
-        onView(withId(com.example.currencycoverterapp.R.id.btnCallService)).perform(click())
-
     }
 
     @Test
