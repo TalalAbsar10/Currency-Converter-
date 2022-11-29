@@ -16,4 +16,3 @@
 - Data Binding
 - Unit tests
 - Integration tests
-- 
