@@ -6,7 +6,7 @@
   -There is a timer of 30 seconds on the second screen, and if the timer finishes it navigate back to the first screen.<br />
   -If the convert button is pressd, the dialog button is shown, which asks to approve or decline the converion.<br />
   -Once approve is clicked it navigates to the last screen.<br />
-  -Last screen shows the approved conversion and the exact rate of amount 1 from Currency to to Currency e-g:(1 USD to 3.67 AED).<br /> 
+  -Last screen shows the approved conversion and the exact rate of amount 1 from Currency to to Currency e-g:(1 USD is 3.67 AED).<br /> 
 3- If the the device is not connected to the internet, the data is fetched from the database.
 
 **Tech Stack**
