@@ -1,7 +1,7 @@
 # Currency-Converter-App
 
 ## Functionality
-1- App fethces the data on the first screen and saves the data in the database.<br />
+1- The App fetches the data on the first screen and saves the data in the database.<br />
 2- The second sreen shows the conversion of the amount as per the currencies selected from the previous screen.<br />
   -There is a timer of 30 seconds on the second screen, and if the timer finishes it navigate back to the first screen.<br />
   -If the convert button is pressd, the dialog button is shown, which asks to approve or decline the converion.<br />
